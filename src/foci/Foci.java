@@ -52,7 +52,7 @@ public class Foci {
                 System.out.println(m.toString());
             }
         }
-        System.out.println("***********");
+        System.out.println("***********Fordítás***********");
 
         Set<String> forditottak = new TreeSet<>();
         for (meccs m : meccsek) {
@@ -69,6 +69,8 @@ public class Foci {
         for (String s : forditottak) {
             System.out.println(s);
         }
+        System.out.println("*********Csapat név********");
+        
         sc.nextLine();
         String csapat = sc.nextLine();
         int lott = 0, kapott = 0;
@@ -85,6 +87,28 @@ public class Foci {
 
         }
         System.out.println(csapat+"   lőtt:"+lott+"    kapott:"+kapott);
+        int veresegszamlalo=0;
+        for (meccs k: meccsek) {
+            if (csapat.equals(k.getHazaicsnev()))
+                if (k.getHazaig()<k.getIdegeng())
+                  veresegszamlalo=1;
+            if (csapat.equals(k.getVendegcsnev()))
+                if (k.getIdegeng()<k.getHazaig())
+                    veresegszamlalo=1;
+        }
+        if (veresegszamlalo==0)
+            System.out.println("A csapat veretlen");
+        String csapatnev="";
+        for (meccs f: meccsek){
+            if (csapat.equals(f.getHazaicsnev()))
+                if (f.getHazaig()<f.getIdegeng())
+                    csapatnev=f.getVendegcsnev();
     }
+        if (csapatnev=="")
+            System.out.println("Nem kapott ki");
+        else{
+            System.out.println(csapatnev+"-től kikaptak");
+        }
 
+    }
 }
