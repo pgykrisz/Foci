@@ -98,16 +98,20 @@ public class Foci {
         }
         if (veresegszamlalo==0)
             System.out.println("A csapat veretlen");
+        
         String csapatnev="";
+        int fordulo=0;
         for (meccs f: meccsek){
             if (csapat.equals(f.getHazaicsnev()))
-                if (f.getHazaig()<f.getIdegeng())
+                if (f.getHazaig()<f.getIdegeng()){
                     csapatnev=f.getVendegcsnev();
+                    fordulo=f.getFordulo();
+                }
     }
         if (csapatnev=="")
             System.out.println("Nem kapott ki");
         else{
-            System.out.println(csapatnev+"-től kikaptak");
+            System.out.println(csapatnev+"-től kikaptak"+" "+fordulo+"-ban");
         }
 
     }
